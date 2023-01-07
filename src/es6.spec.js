@@ -37,11 +37,17 @@ describe('es6', () => {
     });
 
     describe('#Dictionary', () => {
-        it('экземпляр класса создается', () => {
+        it('Экземпляр класса создается', () => {
             const dic = new core.Dictionary();
-
-            // TODO
             assert.strictEqual(!!dic, true);
+        });
+        it('добавляет слова', () => {
+            const dic = new core.Dictionary();
+            dic.add(
+                'Кошка',
+                'домашнее животное, одно из наиболее популярных «животных-компаньонов»'
+            );
+            assert.strictEqual(dic.map.get('Кошка'), 'домашнее животное, одно из наиболее популярных «животных-компаньонов»' );
         });
     });
 });
