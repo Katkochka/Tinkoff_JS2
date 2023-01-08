@@ -41,7 +41,7 @@ describe('es6', () => {
             const dic = new core.Dictionary();
             assert.strictEqual(!!dic, true);
         });
-        it('добавляет слова', () => {
+        it('добавляет слово', () => {
             const dic = new core.Dictionary();
             dic.add(
                 'Кошка',
@@ -49,5 +49,29 @@ describe('es6', () => {
             );
             assert.strictEqual(dic.map.get('Кошка'), 'домашнее животное, одно из наиболее популярных «животных-компаньонов»' );
         });
+        it('удаляет слово', () => {
+            const dic = new core.Dictionary();
+            dic.add(
+                'Кошка',
+                'домашнее животное, одно из наиболее популярных «животных-компаньонов»'
+            );
+
+            dic.delete('Кошка')
+            assert.strictEqual(dic.get('Кошка'), 'Кошка no founded in the dictionary');
+        });
+        it('выводит все слова', () => {
+            const dic = new core.Dictionary();
+            dic.add(
+                'Кошка',
+                'домашнее животное, одно из наиболее популярных «животных-компаньонов»'
+            );
+            dic.add(
+                'Котик',
+                'домашнее животное, аналогично кошке»'
+            );
+
+            assert.strictEqual(dic.getAllWords(), 'Кошка,Котик,');
+        });
+
     });
 });

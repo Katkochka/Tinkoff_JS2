@@ -7,11 +7,8 @@
 // строку формата Имя Фамилия
 
 function fioToName(fio) {
-
-    let fioMas = [];
-    fioMas = fio.split(' ');
-
-    return (fioMas[1]+ ' ' + fioMas[0]);
+    let [lastName,firstName] = fio.split(' ');
+    return (`${firstName} ${lastName}`);
 }
 
 
@@ -21,8 +18,7 @@ function fioToName(fio) {
 
 function filterUnique(array) {
     const numberSet = new Set(array);
-    const newArray = Array.from(numberSet);
-    return newArray; 
+    return  Array.from(numberSet);
 }
 
 // Задача: разница зарплат
@@ -50,6 +46,42 @@ class Dictionary {
             return true;
         }
         else return false;
+    }
+
+    get(word){
+        if(this.map.has(word)) {
+            const description = this.map.get(word);
+            return `${word} - ${description}`;
+        } else {
+            return `${word} no founded in the dictionary`;
+        }
+    }
+
+    getAll(word){
+        if(this.map.has(word)) {
+            const description = this.map.get(word);
+            return `${word} - ${description}`;
+        } else {
+            return `${word} no founded in the dictionary`;
+        }
+    }
+
+    delete(word){
+        if(this.map.has(word)) {
+            this.map.delete(word);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    getAllWords(){
+        let str ='';
+        const mapIter = this.map.keys();
+            for(let i = 0; i< this.map.size ; i++){
+                str+= `${mapIter.next().value},`;
+            }
+        return str;
     }
 
 }
